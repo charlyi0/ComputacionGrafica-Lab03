@@ -24,7 +24,7 @@
     <ClCompile Include="Window.cpp">
       <Filter>Archivos de origen</Filter>
     </ClCompile>
-    <ClCompile Include="..\..\..\..\Documents\Compu Grafica Lab\Practica01\prac01\prac01\P01-423005378.cpp">
+    <ClCompile Include="P01-423005378.cpp">
       <Filter>Archivos de origen</Filter>
     </ClCompile>
   </ItemGroup>
