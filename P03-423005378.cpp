@@ -255,9 +255,7 @@ void CrearPiramideCuadrangular() {
 }
 
 // RUBICK PIRAMIDE
-
-
-// Crea una pirámide pequeña (Para los centros y las aristas)
+// Crea una pirámide pequeña
 void CrearPiramidePequena(glm::vec3 t1, glm::vec3 t2, glm::vec3 t3, glm::vec3 faceNormal, Mesh* mesh) {
 	glm::vec3 centroid = (t1 + t2 + t3) / 3.0f;
 	float S = 0.88f;
@@ -288,16 +286,15 @@ void CrearPiramidePequena(glm::vec3 t1, glm::vec3 t2, glm::vec3 t3, glm::vec3 fa
 	mesh->CreateMeshGeometry(vertices, indices, vertices.size(), indices.size());
 }
 
-// Crea la porción de una esquina sólida correspondiente a una cara coloreada
+
 void CrearCaraEsquina(glm::vec3 t1, glm::vec3 t2, glm::vec3 t3, glm::vec3 centroidCorner, glm::vec3 faceNormal, Mesh* mesh) {
-	// En lugar de encoger hacia el centro de la cara, encogemos hacia el centro de la ESQUINA 3D.
-	// Esto genera un bloque sólido perfecto.
+
 	float S = 0.88f;
 	glm::vec3 p1 = centroidCorner + (t1 - centroidCorner) * S;
 	glm::vec3 p2 = centroidCorner + (t2 - centroidCorner) * S;
 	glm::vec3 p3 = centroidCorner + (t3 - centroidCorner) * S;
 
-	// Alineación visual con el resto de las piezas
+	
 	p1 += faceNormal * 0.02f;
 	p2 += faceNormal * 0.02f;
 	p3 += faceNormal * 0.02f;
@@ -306,16 +303,15 @@ void CrearCaraEsquina(glm::vec3 t1, glm::vec3 t2, glm::vec3 t3, glm::vec3 centro
 	glm::vec3 tip = centroidCorner + faceNormal * 0.02f;
 
 	vector<GLfloat> vertices = {
-		p1.x, p1.y, p1.z,       // Vértice 0
-		p2.x, p2.y, p2.z,       // Vértice 1
-		p3.x, p3.y, p3.z,       // Vértice 2
-		tip.x, tip.y, tip.z		// Vértice 3 (Centro interno de la esquina)
+		p1.x, p1.y, p1.z,       
+		p2.x, p2.y, p2.z,       
+		p3.x, p3.y, p3.z,       
+		tip.x, tip.y, tip.z		
 	};
 
 	vector<unsigned int> indices = {
-		0, 1, 2,                // Cara principal
-		0, 3, 1,                // Pared interna
-		1, 3, 2,                // Pared interna
+		0, 1, 2,                
+		0, 3, 1,              
 		2, 3, 0                 // Pared interna
 	};
 
@@ -622,7 +618,7 @@ Se usa el Mouse y las teclas WASD y su posición inicial está en 0,0,1 y ve hacia
 		//		}
 		//	}
 		
-		//  piramide negra
+		//  Piramide negra
 		color = glm::vec3(0.05f, 0.05f, 0.05f);
 		glUniform3fv(uniformColor, 1, glm::value_ptr(color));
 		meshList[5]->RenderMeshGeometry();
